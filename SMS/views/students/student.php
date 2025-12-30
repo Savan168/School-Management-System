@@ -1,1 +1,1 @@
-s
+<h1>this is the student page.</h1>
