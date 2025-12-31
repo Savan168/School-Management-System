@@ -1,1 +1,0 @@
-scoreadd.php
