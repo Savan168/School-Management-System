@@ -22,6 +22,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
                 <?php
                 $page = $_GET['page'] ?? 'dashboard';
                 switch ($page) {
+<<<<<<< HEAD
                     case 'stds':
                         include 'views/students/student.php';
                         break;
@@ -80,6 +81,41 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
                         break;
                 } ?> 
         </div>
+=======
+                    case 'dashboard':
+                        include 'views/includes/dashboard.php';
+                        break;
+                    case 'students':
+                        include 'views/students/student.php';
+                        break;
+                    case 'attendance':
+                        include 'views/students/stdattendace.php';
+                        break;
+                     case 'teachers':
+                        include 'views/teachers/teacher.php';
+                        break;
+                    case 'parents':
+                        include 'views/parent.php';
+                        break;
+                    case 'labrary':
+                        include 'views/labrary.php';
+                        break;
+                    case 'Accouts':
+                        include 'views/accouts.php';
+                        break;
+                    case 'classes':
+                        include 'views/classes/class.php';
+                        break;
+                     case 'subjects':
+                        include 'views/subject.php';
+                        break;
+                    case 'classRoutine':
+                        include 'views/classroutine.php';
+                        break;
+                } 
+                ?>
+            </div>
+>>>>>>> e2824fa457b262278b5a40b52d3e2adfd0574903
         </div>
     </div>
 
