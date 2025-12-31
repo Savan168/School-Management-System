@@ -15,8 +15,8 @@
         <ul>
             <a href="index.php?page=dashboard">Dashboard</a><br>
             <a href="index.php?page=students">Students</a><br>
-            <a href="index.php?page=attendance">Attendance</a><br>
             <a href="index.php?page=teachers">Teachers</a><br>
+            <a href="index.php?page=attendance">Attendance</a><br>
             <a href="index.php?page=classes">Classes</a>
 
         </ul>

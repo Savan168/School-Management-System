@@ -24,25 +24,37 @@
                 $page = $_GET['page'] ?? 'dashboard';
 
                 switch ($page) {
-                    case 'students':
-                        include 'views/students/student.php';
-                        break;
-
-                    case 'attendance':
-                        include 'views/students/stdattendace.php';
-                        break;
-
-                    case 'teachers':
-                        include 'views/teachers/teacher.php';
-                        break;
-
-                    case 'classes':
-                        include 'views/classes/class.php';
-                        break;
                     case 'dashboard':
                         include 'views/includes/dashboard.php';
                         break;
-                }
+                    case 'students':
+                        include 'views/students/student.php';
+                        break;
+                    case 'attendance':
+                        include 'views/students/stdattendace.php';
+                        break;
+                     case 'teachers':
+                        include 'views/teachers/teacher.php';
+                        break;
+                    case 'parents':
+                        include 'views/parent.php';
+                        break;
+                    case 'labrary':
+                        include 'views/labrary.php';
+                        break;
+                    case 'Accouts':
+                        include 'views/accouts.php';
+                        break;
+                    case 'classes':
+                        include 'views/classes/class.php';
+                        break;
+                     case 'subjects':
+                        include 'views/subject.php';
+                        break;
+                    case 'classRoutine':
+                        include 'views/classroutine.php';
+                        break;
+                } 
                 ?>
             </div>
         </div>
