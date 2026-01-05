@@ -68,7 +68,7 @@ $btnClass = "flex w-full items-center p-4 hover:bg-[#06284d] transition-all grou
 </head>
 <body class="bg-gray-100 font-sans">
     <div class="flex">
-        <div class="w-[15%] h-screen bg-[#041d3b] text-gray-300 fixed overflow-y-auto shadow-2xl">
+        <div class="w-[13%] h-screen bg-[#041d3b] text-gray-300 fixed overflow-y-auto shadow-2xl">
             <div class="w-full h-[60px] bg-[#ffa001] flex items-center justify-between px-4 sticky top-0 z-10">
                 <!-- ------o---------------- -->
             </div>
@@ -92,7 +92,6 @@ $btnClass = "flex w-full items-center p-4 hover:bg-[#06284d] transition-all grou
                                     <?php endforeach; ?>
                                 </ul>
 
-<<<<<<< HEAD
                             <?php else: ?>
                                 <a href="index.php?page=<?= $menu['link'] ?>" 
                                 class="flex w-full items-center p-4 hover:bg-[#06284d] transition-all <?= ($currentPage == $menu['link']) ? 'bg-[#06284d] text-white' : '' ?>">
@@ -105,20 +104,6 @@ $btnClass = "flex w-full items-center p-4 hover:bg-[#06284d] transition-all grou
                 </ul>
             </nav>
         </div>
-=======
-<body>
-
-    <div class="bg-blue-300 h-screen text-[30px] w-full">
-        <h1>navbar</h1>
-        <ul>
-            <a href="index.php?page=dashboard">Dashboard</a><br>
-            <a href="index.php?page=students">Students</a><br>
-            <a href="index.php?page=teachers">Teachers</a><br>
-            <a href="index.php?page=attendance">Attendance</a><br>
-            <a href="index.php?page=classes">Classes</a>
-
-        </ul>
->>>>>>> e2824fa457b262278b5a40b52d3e2adfd0574903
     </div>
 
 </body>

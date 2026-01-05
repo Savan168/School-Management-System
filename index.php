@@ -1,6 +1,22 @@
 <?php
-// 1. Determine the page once at the top
+// 1. Define the base path (current folder)
+define('BASE_PATH', __DIR__);
+
+// 2. Load the database (Adjust this path based on your actual folder name)
+require_once BASE_PATH . '/views/config/db.php'; 
+
+// 3. Determine the page
 $page = $_GET['page'] ?? 'dashboard';
+
+// 4. Fetch teachers (using PDO as per your code)
+try {
+    $stmt = $pdo->prepare("SELECT * FROM tblteachers ORDER BY id ASC");
+    $stmt->execute();
+    $teachers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch(PDOException $e) {
+    // It's helpful to see the error while developing
+    error_log("Error fetching teachers: " . $e->getMessage());
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,14 +29,14 @@ $page = $_GET['page'] ?? 'dashboard';
 </head>
 <body class="bg-gray-100">
     <div class="flex h-screen">
-        <div class="w-[15%] border-r bg-white">
+        <div class="w-[13%] border-r bg-white">
             <?php include 'views/includes/nav.php'; ?>
         </div>
 
-        <div class="w-[85%] flex flex-col">
+        <div class="w-[87%] flex flex-col">
             <?php include 'views/includes/header.php'; ?>
             
-            <div class="lg:p-8 flex-grow overflow-y-auto">
+            <div class="lg:p-4 flex-grow overflow-y-auto w-full">
                 <?php
                 switch ($page) {
                     // Student Routes
