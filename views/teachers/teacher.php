@@ -8,9 +8,7 @@ try {
 } catch(PDOException $e) {
     die("Error fetching teachers: " . $e->getMessage());
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +41,7 @@ try {
             <thead>
                 <tr>
                     <th><input type="checkbox"></th>
-                    <?php $headers = ["ID", "Photo","Name","Gender","Subject","Class","Section","Address","Date Of Birth","Mobile No","E-Mail","Action"];
+                    <?php $headers = ["ID", "Photo","First_Name","Last_Name","Gender","Subject","Class","Section","Address","Date Of Birth","Mobile No","E-Mail","Action"];
                         foreach ($headers as $header) {
                             if ($header === "ID") {
                                 echo "<th> ID <span class='sort-icon'>⇅</span> </th>";
@@ -63,7 +61,7 @@ try {
                         <td>d</td>
                         <td><?= $teacher['First_Name'] ?></td>
                         <td><?= $teacher['Last_Name'] ?></td>
-                        <td class="text-center" ><?= $teacher['Gender'] ?></td>
+                        <td class="text-center"><?= $teacher['Gender'] == 1 ? 'Male' : 'Female' ?></td>
                         <td><?= $teacher['Subject'] ?></td>
                         <td class="text-center"><?= $teacher['Class'] ?></td>
                         <td class="text-center"><?= $teacher['Section'] ?></td>
@@ -71,32 +69,21 @@ try {
                         <td><?= $teacher['DOB'] ?></td>
                         <td><?= $teacher['Mobile'] ?></td>
                         <td><?= $teacher['Email'] ?></td>
-                        <th class=" p-1 flex justify-around items-center">
+                        <th class="p-1 flex justify-around items-center">  
                             <i class="bi bi-eye hover:cursor-pointer"></i>
-                            <i class="bi text-green-400 hover:cursor-pointer bi-pencil-square"></i>
-                            <i class="bi text-red-400 hover:cursor-pointer text-[19px] bi-x"></i>
+                            <a href="index.php?page=teacheradd&id=<?= $teacher['ID'] ?>&method=btnUpdate">
+                                <i class="bi text-green-400 hover:cursor-pointer bi-pencil-square"></i>
+                            </a> 
+                            <a href="index.php?page=teachers&delete_id=<?= $teacher['ID'] ?>" 
+                                onclick="return confirm('Are you sure you want to delete this teacher?');">
+                                <i class="bi text-red-400 hover:cursor-pointer text-[19px] bi-x"></i>
+                            </a>
+
                         </th>
+
+
                     </tr>
                 <?php endforeach; ?>
-                <!-- <tr class="border">
-                    <th class="border"><input type="checkbox"></th>
-                    <th class="border p-1">1</th>
-                    <th class="border p-1">2</th>
-                    <th class="border p-1">3</th>
-                    <th class="border p-1">4</th>
-                    <th class="border p-1">5</th>
-                    <th class="border p-1">6</th>
-                    <th class="border p-1">7</th>
-                    <th class="border p-1">8</th>
-                    <th class="border p-1">9</th>
-                    <th class="border p-1">10</th>
-                    <th class="border p-1">11</th>
-                    <th class="border p-1 flex justify-around items-center">
-                        <i class="bi bi-eye"></i>
-                        <i class="bi text-green-400 hover:cursor-pointer bi-pencil-square"></i>
-                        <i class="bi text-red-400 hover:cursor-pointer text-[19px] bi-x"></i>
-                    </th>
-                </tr> -->
             </tbody>
             </table>
          </div>

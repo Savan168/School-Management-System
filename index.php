@@ -1,21 +1,44 @@
 <?php
-// 1. Define the base path (current folder)
 define('BASE_PATH', __DIR__);
+require_once BASE_PATH . '/views/config/db.php';
+require_once BASE_PATH . '/views/config/function.php';
 
-// 2. Load the database (Adjust this path based on your actual folder name)
-require_once BASE_PATH . '/views/config/db.php'; 
+// ============================= handle save and update ===================================
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-// 3. Determine the page
+    if (isset($_POST['save'])) {
+        addTeacher($pdo, $_POST, $_FILES);
+        header("Location: index.php?page=teachers&msg=added");
+        exit;
+    }
+
+    if (isset($_POST['update'])) {
+        $id = $_POST['ID'] ?? null;
+
+        if (!$id) {
+            die("Teacher ID missing");
+        }
+
+        updateTeacher($pdo, $id, $_POST, $_FILES);
+        header("Location: index.php?page=teachers&msg=updated");
+        exit;
+    }
+}
+// ===================== handle for delete ================================
+if (isset($_GET['delete_id']) && $_GET['delete_id'] != 0) {
+    $delete_id = (int)$_GET['delete_id'];
+    $stmt = $pdo->prepare("DELETE FROM tblteachers WHERE ID = :id");
+    $stmt->execute(['id' => $delete_id]);
+    header("Location: index.php?page=teachers&msg=deleted");
+    exit;
+}
 $page = $_GET['page'] ?? 'dashboard';
-
-// 4. Fetch teachers (using PDO as per your code)
 try {
-    $stmt = $pdo->prepare("SELECT * FROM tblteachers ORDER BY id ASC");
+    $stmt = $pdo->prepare("SELECT * FROM tblteachers ORDER BY ID ASC");
     $stmt->execute();
     $teachers = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch(PDOException $e) {
-    // It's helpful to see the error while developing
-    error_log("Error fetching teachers: " . $e->getMessage());
+    die("Error fetching teachers: " . $e->getMessage());
 }
 ?>
 <!DOCTYPE html>
